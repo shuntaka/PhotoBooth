@@ -3,8 +3,6 @@ import {render} from 'react-dom';
 import Gallery from './Gallery';
 import Capture from './Capture';
 
-
-
 let elementsList = [
   {
     src:'https://p931z2nb6eo1jytzj2ufrzyoiz-wpengine.netdna-ssl.com/mindshift/wp-content/uploads/sites/23/2017/01/Personalized-1020x680.jpg'
@@ -81,9 +79,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Capture />
-      </div>
+      <Capture />
     );
   }
 }

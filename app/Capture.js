@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/lib/Button';
+
 import styles from './styles.css';
-import bootstrap from './bootstrap/css/bootstrap.css';
+import { Button } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+
 
 
 class Capture extends Component {
@@ -58,6 +62,10 @@ class Capture extends Component {
     this.takePicture();
   }
 
+  handleSaveClick(event) {
+    alert('saved');
+  }
+
   takePicture() {
     const canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
@@ -75,11 +83,16 @@ class Capture extends Component {
 
   render() {
     return (
-        <div className={ styles.capture }>
-        <Camera handleStartClick={ this.handleStartClick } />
-        <canvas id="canvas" className={ styles.picSize } hidden></canvas>
-        <Photo />
-        </div>
+      <Grid>
+        <Row>
+          <Camera handleStartClick={ this.handleStartClick } />
+          <canvas id="canvas" className={ styles.picSize } hidden></canvas>
+        </Row>
+        <Row>
+          <Photo handleSaveClick = { this.handleSaveClick } />
+        </Row>
+      </Grid>
+
     );
   }
 }
@@ -87,7 +100,6 @@ class Capture extends Component {
 const Camera = (props) => (
     <div className="camera" className={ styles.box }>
     <video id="video" className={ styles.picSize }></video>
-    <button type="button" className= {bootstrap.btn + ' ' + bootstrap['btn-primary']} >Primary</button>
     <a id="startButton" onClick={ props.handleStartClick } className={ styles.button }>
     Take photo
     </a>
