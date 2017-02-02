@@ -6,6 +6,8 @@ import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
+import { Media } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 
 
 class Capture extends Component {
@@ -85,11 +87,15 @@ class Capture extends Component {
     return (
       <Grid>
         <Row>
-          <Camera handleStartClick={ this.handleStartClick } />
-          <canvas id="canvas" className={ styles.picSize } hidden></canvas>
+          <Col xs={12} md={8} xsOffset={2}>
+            <Camera handleStartClick={ this.handleStartClick } />
+            <canvas id="canvas" hidden></canvas>
+          </Col>
         </Row>
         <Row>
-          <Photo handleSaveClick = { this.handleSaveClick } />
+          <Col xs={6} md={4}>
+            <Photo handleSaveClick = { this.handleSaveClick } />
+          </Col>
         </Row>
       </Grid>
 
@@ -98,20 +104,20 @@ class Capture extends Component {
 }
 
 const Camera = (props) => (
-    <div className="camera" className={ styles.box }>
+  <Media>
     <video id="video" className={ styles.picSize }></video>
-    <a id="startButton" onClick={ props.handleStartClick } className={ styles.button }>
-    Take photo
-    </a>
-    </div>
+    <Button bsStyle="primary" bsSize="large" id="startButton" onClick={ props.handleStartClick } >
+      Take photo
+    </Button>
+  </Media>
 );
 
 const Photo = (props) => (
-    <div className="output" className={ styles.box }>
-    <img id="photo" alt="Your photo" className={ styles.picSize }/>
-    <a id="saveButton" onClick={ props.handleSaveClick } className={ styles.button }>
+    <div>
+    <Image id="photo" alt="Your photo" rounded responsive/>
+    <Button bsStyle="primary" bsSize="large" id="saveButton" onClick={ props.handleSaveClick } >
       Save Photo
-    </a>
+    </Button>
     </div>
 );
 
