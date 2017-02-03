@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+// import Camera from './Camera.js';
 
-import styles from './styles.css';
 import { Button } from 'react-bootstrap';
 import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-
 import { Media } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 
+import cameraStyles from './cameraStyles.css';
+import photoStyles from './photoStyles.css';
 
 class Capture extends Component {
   constructor(props) {
@@ -59,11 +60,6 @@ class Capture extends Component {
 
   }
 
-  handleStartClick(event) {
-    event.preventDefault();
-    this.takePicture();
-  }
-
   handleSaveClick(event) {
     alert('saved');
   }
@@ -83,42 +79,52 @@ class Capture extends Component {
     photo.setAttribute('src', data);
   }
 
+  handleStartClick(event) {
+    event.preventDefault();
+    this.takePicture();
+  }
+
+  handleSaveClick(event) {
+    event.preventDefault();
+    alert('saved');
+  }
+
+
   render() {
     return (
       <Grid>
-        <Row>
-          <Col xs={12} md={8} xsOffset={2}>
-            <Camera handleStartClick={ this.handleStartClick } />
-            <canvas id="canvas" hidden></canvas>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={4}>
-            <Photo handleSaveClick = { this.handleSaveClick } />
-          </Col>
-        </Row>
+        <Camera handleStartClick={ this.handleStartClick } />
+        <canvas id="canvas" hidden></canvas>
+        <Photo handleSaveClick = { this.handleSaveClick } />
       </Grid>
 
     );
   }
 }
-
-const Camera = (props) => (
-  <Media>
-    <video id="video" className={ styles.picSize }></video>
-    <Button bsStyle="primary" bsSize="large" id="startButton" onClick={ props.handleStartClick } >
-      Take photo
-    </Button>
-  </Media>
-);
+const Camera  = (props) => (
+    <Row>
+      <Col xs={12} md={8}>
+        <video id="video" className={ cameraStyles.picSize }></video>
+        <i className=
+           {`${cameraStyles['gi-4x']} glyphicon glyphicon-camera`} id="startButton"
+           onClick={ props.handleStartClick }>
+        </i>
+      </Col>
+    </Row>
+  );
 
 const Photo = (props) => (
-    <div>
-    <Image id="photo" alt="Your photo" rounded responsive/>
-    <Button bsStyle="primary" bsSize="large" id="saveButton" onClick={ props.handleSaveClick } >
-      Save Photo
-    </Button>
-    </div>
+  <Row>
+    <Col xs={6} md={4}>
+      <Image id="photo" alt="Your photo" rounded responsive />
+      <Button id="startButton" onClick = { props.handleSaveClick }>
+        <i className= {`${photoStyles['gi-3x']} glyphicon glyphicon-upload`}></i>
+        Upload!
+      </Button>
+    </Col>
+    <Col xs={6} md={4}>
+    </Col>
+  </Row>
 );
 
 export default Capture;
