@@ -7,6 +7,7 @@ import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Media } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
+import { Thumbnail } from 'react-bootstrap';
 
 import cameraStyles from './cameraStyles.css';
 import photoStyles from './photoStyles.css';
@@ -104,9 +105,9 @@ class Capture extends Component {
 const Camera  = (props) => (
     <Row>
       <Col xs={12} md={8}>
-        <video id="video" className={ cameraStyles.picSize }></video>
-        <i className=
-           {`${cameraStyles['gi-4x']} glyphicon glyphicon-camera`} id="startButton"
+        <video id="video" className = {cameraStyles.video} ></video>
+        <i id="startButton"
+           className = {`${cameraStyles['gi-4x']} ${cameraStyles['startButton']} glyphicon glyphicon-camera`}
            onClick={ props.handleStartClick }>
         </i>
       </Col>
@@ -115,14 +116,18 @@ const Camera  = (props) => (
 
 const Photo = (props) => (
   <Row>
-    <Col xs={6} md={4}>
+    <Col xs={9} md={6}>
       <Image id="photo" alt="Your photo" rounded responsive />
-      <Button id="startButton" onClick = { props.handleSaveClick }>
-        <i className= {`${photoStyles['gi-3x']} glyphicon glyphicon-upload`}></i>
+    </Col>
+    <Col xs={3} md={2}>
+      <p>Description</p>
+      <Button id="saveButton"
+              onClick = { props.handleSaveClick }
+              bsStyle="primary">
+        <i className = {`${photoStyles['gi-3x']} glyphicon glyphicon-upload`}>
+        </i>
         Upload!
       </Button>
-    </Col>
-    <Col xs={6} md={4}>
     </Col>
   </Row>
 );

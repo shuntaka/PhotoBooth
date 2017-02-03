@@ -3,6 +3,22 @@
 .gi-4x{font-size: 4em;}
 .gi-5x{font-size: 5em;}
 
+.video {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 0 auto;
+}
+
+.startButton {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.0);
+    z-index: 10;
+}
+
 .picSize {
     width:400px;
     background-color:#ccc;
