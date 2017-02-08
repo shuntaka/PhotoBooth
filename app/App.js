@@ -84,7 +84,7 @@ class App extends Component {
         <Grid>
         <Row>
         </Row>
-        <Row>
+        <Row className="align-items-center">
         <Capture />
         </Row>
         </Grid>

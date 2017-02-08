@@ -9,6 +9,8 @@ import { Media } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import { Thumbnail } from 'react-bootstrap';
 
+import iPhoneWrapperStyles from './iPhoneWrapperStyles.css';
+
 import cameraStyles from './cameraStyles.css';
 import photoStyles from './photoStyles.css';
 
@@ -56,8 +58,8 @@ class IPhone extends Component {
       });
 
     this.clearPhoto();
-  };
 
+  };
   clearPhoto() {
     const canvas = document.querySelector('canvas');
     const photo = document.getElementById('photo');
@@ -102,7 +104,7 @@ class IPhone extends Component {
 
   render() {
     return (
-        <div>
+        <div className = {iPhoneWrapperStyles.iPhoneWrapper}>
         <div className="marvel-device iphone6plus gold landscape">
         <div className="top-bar"></div>
         <div className="sleep"></div>
@@ -123,23 +125,10 @@ class IPhone extends Component {
   }
 }
 
-
 const Camera  = (props) => (
-    <div className={cameraStyles.cameraContainer}>
-    <Row>
-    <Col className="col-12">
+    <div className={cameraStyles.cameraWrapper}>
     <video id="video" className = {cameraStyles.video} ></video>
-    </Col>
-    </Row>
-    <Row>
-    <Col className="col-12">
-    <div id="startButton" className={cameraStyles.cameraButtonContainer}
-  onClick={ props.handleStartClick }
-    >
-    <i className = "fa fa-camera fa-2x"></i>
-    </div>
-    </Col>
-    </Row>
+    <i id="startButton" className = "fa fa-camera fa-2x" onClick={ props.handleStartClick }></i>
     </div>
 );
 
