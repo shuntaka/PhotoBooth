@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import {render} from 'react-dom';
+
+import { Grid } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+
 import Gallery from './Gallery';
 import Capture from './Capture';
 
 import "../node_modules/bootstrap/scss/bootstrap.scss";
+import "../devices.css/assets/scss/devices.scss";
+
 import appStyles from "./appStyles.css";
 
 
@@ -72,19 +78,16 @@ let elementsList = [
 // ]
 
 class App extends Component {
-  // render() {
-  //   return (
-  //     <div>
-  //       <Capture />
-  //       <Gallery elements = { elementsList }/>
-  //     </div>
-  //   );
-  // }
-
   render() {
     return (
-      <div className={appStyles.appContainer}>
+        <div className={appStyles.appContainer}>
+        <Grid>
+        <Row>
+        </Row>
+        <Row>
         <Capture />
+        </Row>
+        </Grid>
         </div>
     );
   }

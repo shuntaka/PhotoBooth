@@ -13,6 +13,16 @@ import cameraStyles from './cameraStyles.css';
 import photoStyles from './photoStyles.css';
 
 class Capture extends Component {
+  render() {
+    return (
+      <div>
+        <IPhone />
+      </div>
+    );
+  }
+}
+
+class IPhone extends Component {
   constructor(props) {
     super(props);
 
@@ -90,17 +100,30 @@ class Capture extends Component {
     alert('saved');
   }
 
-
   render() {
     return (
-        <Grid>
-        <Camera handleStartClick={ this.handleStartClick } />
+        <div>
+        <div className="marvel-device iphone6plus gold landscape">
+        <div className="top-bar"></div>
+        <div className="sleep"></div>
+        <div className="volume"></div>
+        <div className="camera"></div>
+        <div className="sensor"></div>
+        <div className="speaker"></div>
+        <div className="screen">
         <canvas id="canvas" hidden></canvas>
+        <Camera handleStartClick={ this.handleStartClick } />
+        </div>
+        <div className="home"></div>
+        <div className="bottom-bar"></div>
+        </div>
         <Photo handleSaveClick = { this.handleSaveClick } />
-        </Grid>
+        </div>
     );
   }
 }
+
+
 const Camera  = (props) => (
     <div className={cameraStyles.cameraContainer}>
     <Row>
