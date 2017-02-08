@@ -93,43 +93,58 @@ class Capture extends Component {
 
   render() {
     return (
-      <Grid>
+        <Grid>
         <Camera handleStartClick={ this.handleStartClick } />
         <canvas id="canvas" hidden></canvas>
         <Photo handleSaveClick = { this.handleSaveClick } />
-      </Grid>
+        </Grid>
 
     );
   }
 }
 const Camera  = (props) => (
+    <div className={cameraStyles.cameraContainer}>
     <Row>
-      <Col xs={12} md={8}>
-        <video id="video" className = {cameraStyles.video} ></video>
-        <i id="startButton"
-           className = {`${cameraStyles['gi-4x']} ${cameraStyles['startButton']} glyphicon glyphicon-camera`}
-           onClick={ props.handleStartClick }>
-        </i>
-      </Col>
+    <Col className="col-12">
+    <video id="video" className = {cameraStyles.video} ></video>
+    </Col>
     </Row>
-  );
+    <Row>
+    <Col className="col-12">
+    <div id="startButton" className={cameraStyles.cameraButtonContainer}
+  onClick={ props.handleStartClick }
+    >
+    <i className = "fa fa-camera fa-2x"></i>
+    </div>
+    </Col>
+    </Row>
+    </div>
+);
 
 const Photo = (props) => (
-  <Row>
-    <Col xs={9} md={6}>
-      <Image id="photo" alt="Your photo" rounded responsive />
+    <div className={photoStyles.photoContainer}>
+    <Row className="no-gutters">
+    <Col className="col-6">
+    <Image id="photo" className="img-fluid" />
     </Col>
-    <Col xs={3} md={2}>
-      <p>Description</p>
-      <Button id="saveButton"
-              onClick = { props.handleSaveClick }
-              bsStyle="primary">
-        <i className = {`${photoStyles['gi-3x']} glyphicon glyphicon-upload`}>
-        </i>
-        Upload!
-      </Button>
+    <Col className="col-6">
+    <div className={`${photoStyles.scoreContainer}`}>
+    <p className={photoStyles.scoreTitle}>Your Happiness</p>
+    <p className={photoStyles.score}>77</p>
+  </div>
     </Col>
-  </Row>
+    </Row>
+
+    <Row>
+    <Col className="col-12">
+    <div id="saveButton" className={photoStyles.uploadButtonContaier}
+  onClick = { props.handleSaveClick }>
+    <i className = "fa fa-upload fa-2x"></i>
+    UPLOAD
+  </div>
+    </Col>
+    </Row>
+    </div>
 );
 
 export default Capture;

@@ -1,11 +1,55 @@
+.photoContainer {
+}
+
+.scoreContainer {
+    height: 100%;
+
+    /* for centering the <p> contained in the children */
+    position: relative;
+
+    /* background-color */
+    background-color:#FFEB3B
+}
+
+.scoreTitle {
+    height: 20%;
+    margin-bottom:0;
+}
+
+.score {
+    /* size */
+    height: 50%;
+    width: 50%;
+
+    /* horizontally & vertically center the <p> */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* remove margin */
+    margin-bottom:0;
+
+    /* horizontally center the text inside <p> */
+    text-align: center;
+
+    /* vertically center the text inside <p> */
+    padding-top: 3%;
+    padding-bottom: 3%;
+
+    /* font */
+    color: #34495e;
+    font-size: fit-height;
+}
+
+
+.uploadButtonContaier {
+    background-color: #03A9F4;
+    color:#ecf0f1;
+    text-align: center;
+}
+
 .gi-2x{font-size: 2em;}
 .gi-3x{font-size: 3em;}
 .gi-4x{font-size: 4em;}
 .gi-5x{font-size: 5em;}
-
-.picSize {
-    width:400px;
-    background-color:#ccc;
-    border:10px solid #ddd;
-    margin:0 auto;
-}

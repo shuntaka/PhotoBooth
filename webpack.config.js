@@ -5,7 +5,6 @@ var webpack = require('webpack');
  */
 var config = {
   debug: true,
-  // devtool: 'eval-source-map',
   devtool: 'inline-source-map',
 
   entry: __dirname + "/app/App.js",
@@ -26,7 +25,15 @@ var config = {
       {
         test: /\.css$/,
         loader: "style!css?modules"
-      }
+      },
+      {
+        test: /bootstrap.scss$/,
+        // loader: "style!css!sass"
+        loaders: ['style', 'css', 'sass']
+      },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+
     ]
   },
   devServer: {
