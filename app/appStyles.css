@@ -1,0 +1,9 @@
+.appContainer {
+    background: url("./img/photostudio/photostudio1.png") center center no-repeat;
+
+    /* Ensure the html element always takes up the full height of the browser window */
+    min-height:100%;
+
+    /* The Magic */
+    background-size:cover;
+}

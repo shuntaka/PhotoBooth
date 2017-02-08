@@ -4,6 +4,8 @@ import Gallery from './Gallery';
 import Capture from './Capture';
 
 import "../node_modules/bootstrap/scss/bootstrap.scss";
+import appStyles from "./appStyles.css";
+
 
 let elementsList = [
   {
@@ -81,7 +83,9 @@ class App extends Component {
 
   render() {
     return (
-      <Capture />
+      <div className={appStyles.appContainer}>
+        <Capture />
+        </div>
     );
   }
 }

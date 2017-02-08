@@ -98,7 +98,6 @@ class Capture extends Component {
         <canvas id="canvas" hidden></canvas>
         <Photo handleSaveClick = { this.handleSaveClick } />
         </Grid>
-
     );
   }
 }
