@@ -7,7 +7,7 @@ var config = {
   debug: true,
   devtool: 'inline-source-map',
 
-  entry: __dirname + "/app/App.js",
+  entry: __dirname + "/app/App.jsx",
   output: {
     path: __dirname + "/public",
     filename: "bundle.js"

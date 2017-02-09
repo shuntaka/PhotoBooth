@@ -5,6 +5,7 @@ import { Row } from 'react-bootstrap';
 
 import Gallery from './Gallery';
 import IPhone from './IPhone.jsx';
+import Photo from './Photo.jsx';
 
 import "../node_modules/bootstrap/scss/bootstrap.scss";
 import "../devices.css/assets/scss/devices.scss";
@@ -25,6 +26,9 @@ class App extends Component {
       </Row>
       <Row className="align-items-center">
         <IPhone />
+      </Row>
+      <Row>
+        <Photo handleSaveClick = {this.handleSaveClick}/>
       </Row>
       </Grid>
     );
