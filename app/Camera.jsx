@@ -1,30 +1,14 @@
 import React, { Component } from 'react';
-// import Camera from './Camera.js';
-
-import { Button } from 'react-bootstrap';
-import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-import { Media } from 'react-bootstrap';
-import { Image } from 'react-bootstrap';
-import { Thumbnail } from 'react-bootstrap';
 
-import iPhoneWrapperStyles from './iPhoneWrapperStyles.css';
+import Photo from './Photo.jsx';
 
+import styles from './styles.css';
 import cameraStyles from './cameraStyles.css';
-import photoStyles from './photoStyles.css';
 
-class Capture extends Component {
-  render() {
-    return (
-      <div>
-        <IPhone />
-      </div>
-    );
-  }
-}
+export default class Camera extends Component {
 
-class IPhone extends Component {
   constructor(props) {
     super(props);
 
@@ -73,10 +57,6 @@ class IPhone extends Component {
 
   }
 
-  handleSaveClick(event) {
-    alert('saved');
-  }
-
   takePicture() {
     const canvas = document.querySelector('canvas');
     const context = canvas.getContext('2d');
@@ -102,60 +82,15 @@ class IPhone extends Component {
     alert('saved');
   }
 
-  render() {
+  render(props) {
     return (
-        <div className = {iPhoneWrapperStyles.iPhoneWrapper}>
-        <div className="marvel-device iphone6plus gold landscape">
-        <div className="top-bar"></div>
-        <div className="sleep"></div>
-        <div className="volume"></div>
-        <div className="camera"></div>
-        <div className="sensor"></div>
-        <div className="speaker"></div>
-        <div className="screen">
+      <div className={cameraStyles.cameraWrapper}>
         <canvas id="canvas" hidden></canvas>
-        <Camera handleStartClick={ this.handleStartClick } />
-        </div>
-        <div className="home"></div>
-        <div className="bottom-bar"></div>
-        </div>
-        <Photo handleSaveClick = { this.handleSaveClick } />
-        </div>
+        <video id="video" className = {cameraStyles.video} >
+        </video>
+        <Photo />
+        <i id="startButton" className = {`${cameraStyles.cameraButton} fa fa-camera fa-3x`} onClick={ this.handleStartClick }></i>
+    </div>
     );
   }
 }
-
-const Camera  = (props) => (
-    <div className={cameraStyles.cameraWrapper}>
-    <video id="video" className = {cameraStyles.video} ></video>
-    <i id="startButton" className = "fa fa-camera fa-2x" onClick={ props.handleStartClick }></i>
-    </div>
-);
-
-const Photo = (props) => (
-    <div className={photoStyles.photoContainer}>
-    <Row className="no-gutters">
-    <Col className="col-6">
-    <Image id="photo" className="img-fluid" />
-    </Col>
-    <Col className="col-6">
-    <div className={`${photoStyles.scoreContainer}`}>
-    <p className={photoStyles.scoreTitle}>Your Happiness</p>
-    <p className={photoStyles.score}>77</p>
-  </div>
-    </Col>
-    </Row>
-
-    <Row>
-    <Col className="col-12">
-    <div id="saveButton" className={photoStyles.uploadButtonContaier}
-  onClick = { props.handleSaveClick }>
-    <i className = "fa fa-upload fa-2x"></i>
-    UPLOAD
-  </div>
-    </Col>
-    </Row>
-    </div>
-);
-
-export default Capture;
