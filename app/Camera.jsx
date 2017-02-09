@@ -88,7 +88,9 @@ export default class Camera extends Component {
           <video id="video" className = {cameraStyles.video} >
           </video>
         </div>
-        <i id="startButton" className = {`${cameraStyles.shutterButton} fa fa-camera fa-3x`} onClick={ this.handleStartClick }></i>
+        <Button block>
+          <i id="startButton" className = {`${cameraStyles.shutterButton} fa fa-camera fa-3x`} onClick={ this.handleStartClick }></i>
+        </Button>
       </div>
     );
   }
