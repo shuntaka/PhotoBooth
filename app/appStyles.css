@@ -7,3 +7,14 @@
     /* The Magic */
     background-size:cover;
 }
+
+.firstRow {
+    position: relative;
+}
+
+.shutterButton {
+    position: absolute;
+    bottom:10%;
+    left: 50%;
+    z-index: 10;
+}
