@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import Camera from './Camera.jsx';
 
 export default class IPhone extends Component {
-  handleSaveClick(event) {
-    alert('saved');
-  }
-
   render() {
     return (
         <div className="marvel-device iphone6plus gold landscape">

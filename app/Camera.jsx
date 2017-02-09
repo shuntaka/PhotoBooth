@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
-import Photo from './Photo.jsx';
-
-import styles from './styles.css';
 import cameraStyles from './cameraStyles.css';
 
 export default class Camera extends Component {
@@ -84,13 +82,14 @@ export default class Camera extends Component {
 
   render(props) {
     return (
-      <div className={cameraStyles.cameraWrapper}>
-        <canvas id="canvas" hidden></canvas>
-        <video id="video" className = {cameraStyles.video} >
-        </video>
-        <Photo />
-        <i id="startButton" className = {`${cameraStyles.cameraButton} fa fa-camera fa-3x`} onClick={ this.handleStartClick }></i>
-    </div>
+      <div className={cameraStyles.screenWrapper}>
+        <div className={cameraStyles.videoWrapper}>
+          <canvas id="canvas" hidden></canvas>
+          <video id="video" className = {cameraStyles.video} >
+          </video>
+        </div>
+        <i id="startButton" className = {`${cameraStyles.shutterButton} fa fa-camera fa-3x`} ></i>
+      </div>
     );
   }
 }

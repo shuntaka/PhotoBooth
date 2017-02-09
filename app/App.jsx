@@ -21,6 +21,7 @@ class App extends Component {
 
   render() {
     return (
+      <div className = {appStyles.app}>
       <Grid>
       <Row>
       </Row>
@@ -31,6 +32,7 @@ class App extends Component {
         <Photo handleSaveClick = {this.handleSaveClick}/>
       </Row>
       </Grid>
+      </div>
     );
   }
 }

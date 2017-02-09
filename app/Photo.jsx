@@ -3,13 +3,21 @@ import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import photoStyles from './photoStyles.css';
 
 export default class Photo extends Component {
   render() {
     return (
-      <img id="photo" />
+      <div>
+      <Image id="photo" className="img-fluid"/>
+      <Button id="saveButton" className={photoStyles.uploadButtonContaier}
+           onClick = { this.props.handleSaveClick } >
+        <i className = "fa fa-upload fa-2x"></i>
+        UPLOAD
+      </Button>
+      </div>
     )
   }
 }
