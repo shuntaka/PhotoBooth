@@ -96,9 +96,9 @@ class App extends Component {
       <Row>
       </Row>
       <Row className={`${appStyles.firstRow} align-items-center`}>
-        <div className ={appStyles.shutterButton}>
-          <i id="startButton" className = {`fa fa-camera fa-3x`} onClick={ this.handleStartClick }></i>
-        </div>
+        <Button className ={`btn btn-default ${appStyles.shutterButton} ${appStyles['btn-circle-lg']}`}>
+          <i id="startButton" className = {`fa fa-camera fa-2x`} onClick={ this.handleStartClick }></i>
+        </Button>
         <IPhone />
       </Row>
       <Row>
