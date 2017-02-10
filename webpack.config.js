@@ -12,6 +12,9 @@ var config = {
     path: __dirname + "/public",
     filename: "bundle.js"
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   module: {
     loaders: [
       {
@@ -51,7 +54,7 @@ var config = {
     colors: true,
     historyApiFallback: true,
     inline: true
-  },
+  }
 }
 
 /*

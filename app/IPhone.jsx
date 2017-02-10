@@ -1,22 +1,19 @@
-import React, { Component } from 'react';
-import Camera from './Camera.jsx';
+import React from 'react';
+import Camera from './Camera';
 
-export default class IPhone extends Component {
-  render() {
-    return (
-        <div className="marvel-device iphone6plus gold landscape">
-        <div className="top-bar"></div>
-        <div className="sleep"></div>
-        <div className="volume"></div>
-        <div className="camera"></div>
-        <div className="sensor"></div>
-        <div className="speaker"></div>
-        <div className="screen">
-        <Camera />
-        </div>
-        <div className="home"></div>
-        <div className="bottom-bar"></div>
-        </div>
-    );
-  }
-}
+// export default class IPhone extends Component {
+export default () => (
+  <div className="marvel-device iphone6plus gold landscape">
+    <div className="top-bar" />
+    <div className="sleep" />
+    <div className="volume" />
+    <div className="camera" />
+    <div className="sensor" />
+    <div className="speaker" />
+    <div className="screen">
+      <Camera />
+    </div>
+    <div className="home" />
+    <div className="bottom-bar" />
+  </div>
+);

@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import {render} from 'react-dom';
-import { Grid } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { render } from 'react-dom';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 
-import Gallery from './Gallery';
-import IPhone from './IPhone.jsx';
-import Photo from './Photo.jsx';
+import IPhone from './IPhone';
+import Photo from './Photo';
 
-import "../node_modules/bootstrap/scss/bootstrap.scss";
-import "../devices.css/assets/scss/devices.scss";
+import '../node_modules/bootstrap/scss/bootstrap.scss';
+import '../devices.css/assets/scss/devices.scss';
 
-import appStyles from "./appStyles.css";
-
+import appStyles from './appStyles.css';
 
 
 class App extends Component {
@@ -20,17 +16,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      constraints: { audio: false, video: { width: 400, height: 300 } }
+      constraints: { audio: false, video: { width: 400, height: 300 } },
     };
 
     this.handleStartClick = this.handleStartClick.bind(this);
     this.takePicture = this.takePicture.bind(this);
     this.clearPhoto = this.clearPhoto.bind(this);
-  };
+  }
 
   componentDidMount() {
     const constraints = this.state.constraints;
-    const getUserMedia = (params) => (
+    const getUserMedia = params => (
       new Promise((successCallback, errorCallback) => {
         navigator.webkitGetUserMedia.call(navigator, params, successCallback, errorCallback);
       })
@@ -49,8 +45,7 @@ class App extends Component {
       });
 
     this.clearPhoto();
-
-  };
+  }
   clearPhoto() {
     const canvas = document.querySelector('canvas');
     const photo = document.getElementById('photo');
@@ -61,7 +56,6 @@ class App extends Component {
 
     const data = canvas.toDataURL('image/png');
     photo.setAttribute('src', data);
-
   }
 
   takePicture() {
@@ -91,20 +85,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className = {appStyles.app}>
-      <Grid>
-      <Row>
-      </Row>
-      <Row className={`${appStyles.firstRow} align-items-center`}>
-        <Button className ={`btn btn-default ${appStyles.shutterButton} ${appStyles['btn-circle-lg']}`}>
-          <i id="startButton" className = {`fa fa-camera fa-2x`} onClick={ this.handleStartClick }></i>
-        </Button>
-        <IPhone />
-      </Row>
-      <Row>
-        <Photo handleSaveClick = {this.handleSaveClick}/>
-      </Row>
-      </Grid>
+      <div className={appStyles.app}>
+        <Grid>
+          <Row />
+          <Row className={`${appStyles.secondRow} align-items-center`}>
+            <Col>
+              <Button className={`btn btn-default ${appStyles.shutterButton} ${appStyles['btn-circle-lg']}`} onClick={this.handleStartClick}>
+                <i id="startButton" className={'fa fa-camera-retro fa-1x'} />
+              </Button>
+              <IPhone />
+            </Col>
+          </Row>
+          <Row>
+            <Photo handleSaveClick={this.handleSaveClick} />
+          </Row>
+        </Grid>
       </div>
     );
   }
