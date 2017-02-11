@@ -87,13 +87,11 @@ class App extends Component {
     return (
       <div className={appStyles.app}>
         <Grid>
-          <Row />
+          <Row>
+          </Row>
           <Row className={`${appStyles.secondRow} align-items-center`}>
             <Col>
-              <Button className={`btn btn-default ${appStyles.shutterButton} ${appStyles['btn-circle-lg']}`} onClick={this.handleStartClick}>
-                <i id="startButton" className={'fa fa-camera-retro fa-1x'} />
-              </Button>
-              <IPhone />
+              <IPhone onClick={this.handleStartClick} />
             </Col>
           </Row>
           <Row>
