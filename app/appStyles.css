@@ -6,6 +6,12 @@
 
     /* The Magic */
     background-size:cover;
+
+    height: 100%;
+}
+
+.container {
+    height: 100%;
 }
 
 .secondRow {
