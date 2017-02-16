@@ -1,5 +1,5 @@
 import React from 'react';
-import Camera from './Camera';
+import CameraScreen from './CameraScreen';
 import {Button} from 'react-bootstrap';
 import iPhoneStyles from './iPhoneStyles.css';
 // export default class IPhone extends Component {
@@ -13,7 +13,7 @@ export default (props) => (
         <div className="sensor" />
         <div className="speaker" />
         <div className="screen">
-          <Camera />
+          <CameraScreen />
         </div>
         <div className="home" />
         <div className="bottom-bar" />
