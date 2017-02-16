@@ -1,6 +1,11 @@
+.column {
+    position: relative;
+}
+
+
 .shutterButton {
     position: absolute;
-    bottom:7%;
+    bottom:10%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -32,5 +37,3 @@
   line-height: 1.33;
   border-radius: 35px;
 }
-
-

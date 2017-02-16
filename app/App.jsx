@@ -13,94 +13,97 @@ import appStyles from './appStyles.css';
 
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            constraints: { audio: false, video: { width: 400, height: 300 } },
-        };
+    this.state = {
+      constraints: { audio: false, video: { width: 400, height: 300 } },
+    };
 
-        this.handleStartClick = this.handleStartClick.bind(this);
-        this.takePicture = this.takePicture.bind(this);
-        this.clearPhoto = this.clearPhoto.bind(this);
-    }
+    this.handleShutterClick = this.handleShutterClick.bind(this);
+    this.takePicture = this.takePicture.bind(this);
+    this.clearPhoto = this.clearPhoto.bind(this);
+  }
 
-    componentDidMount() {
-        const constraints = this.state.constraints;
-        const getUserMedia = params => (
-            new Promise((successCallback, errorCallback) => {
-                navigator.webkitGetUserMedia.call(navigator, params, successCallback, errorCallback);
-            })
-        );
-
-        getUserMedia(constraints)
-      .then((stream) => {
-          const video = document.querySelector('video');
-          const vendorURL = window.URL || window.webkitURL;
-
-          video.src = vendorURL.createObjectURL(stream);
-          video.play();
+  componentDidMount() {
+    const constraints = this.state.constraints;
+    const getUserMedia = params => (
+      new Promise((successCallback, errorCallback) => {
+        navigator.webkitGetUserMedia.call(navigator, params, successCallback, errorCallback);
       })
-      .catch((err) => {
-          console.log(err);
-      });
+    );
 
-        this.clearPhoto();
-    }
-    clearPhoto() {
-        const canvas = document.querySelector('canvas');
-        const photo = document.getElementById('photo');
-        const context = canvas.getContext('2d');
-        const { width, height } = this.state.constraints.video;
-        context.fillStyle = '#FFF';
-        context.fillRect(0, 0, width, height);
+    getUserMedia(constraints)
+    .then((stream) => {
+      const video = document.querySelector('video');
+      const vendorURL = window.URL || window.webkitURL;
 
-        const data = canvas.toDataURL('image/png');
-        photo.setAttribute('src', data);
-    }
+      video.src = vendorURL.createObjectURL(stream);
+      video.play();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-    takePicture() {
-        const canvas = document.querySelector('canvas');
-        const context = canvas.getContext('2d');
-        const video = document.querySelector('video');
-        const photo = document.getElementById('photo');
-        const { width, height } = this.state.constraints.video;
+      /* this.clearPhoto(); */
+  }
+  clearPhoto() {
+    const canvas = document.querySelector('canvas');
+    const photo = document.getElementById('photo');
+    const photoContainer = document.getElementById('photoContainer');
+    const context = canvas.getContext('2d');
+    const { width, height } = this.state.constraints.video;
+    context.fillStyle = '#FFF';
+    context.fillRect(0, 0, width, height);
 
-        canvas.width = width;
-        canvas.height = height;
-        context.drawImage(video, 0, 0, width, height);
+    const data = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+  }
 
-        const data = canvas.toDataURL('image/png');
-        photo.setAttribute('src', data);
-    }
+  takePicture() {
+    const canvas = document.querySelector('canvas');
+    const context = canvas.getContext('2d');
+    const video = document.querySelector('video');
+    const photo = document.getElementById('photo');
+    const uploadButton = document.getElementById('uploadButton');
 
-    handleStartClick(event) {
-        event.preventDefault();
-        this.takePicture();
-    }
+    const { width, height } = this.state.constraints.video;
 
-    handleSaveClick(event) {
-        event.preventDefault();
-        alert('saved');
-    }
+    canvas.width = width;
+    canvas.height = height;
+    context.drawImage(video, 0, 0, width, height);
 
-    render() {
-        return (
-            <div className={appStyles.app}>
-              <Grid className={appStyles.container}>
-                <Menu />
-                <Row className={`${appStyles.secondRow} align-items-center`}>
-                  <Col>
-                  <IPhone onClick={this.handleStartClick} />
-            </Col>
-                </Row>
-                <Row>
-                  <Photo handleSaveClick={this.handleSaveClick} />
-                </Row>
-              </Grid>
-            </div>
-        );
-    }
+    const data = canvas.toDataURL('image/png');
+    this.clearPhoto();
+    photo.setAttribute('src', data);
+    uploadButton.removeAttribute('disabled');
+  }
+
+  handleShutterClick(event) {
+    event.preventDefault();
+    this.takePicture();
+  }
+
+  handleUploadClick(event) {
+    event.preventDefault();
+    alert('saved');
+  }
+
+  render() {
+    return (
+      <div className={appStyles.app}>
+        <Grid className="h-100">
+          <Menu />
+          <Row className="justify-content-center">
+            <IPhone onClick={this.handleShutterClick} />
+          </Row>
+          <Row className="h-45 justify-content-center align-content-center">
+            <Photo onClick={this.handleUploadClick} />
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
 }
 
 render(<App />, document.getElementById('root'));
