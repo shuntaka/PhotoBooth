@@ -7,7 +7,7 @@ var config = {
   debug: true,
   devtool: 'inline-source-map',
 
-  entry: __dirname + "/app/App.jsx",
+  entry: __dirname + "/app/SmileGram.jsx",
   output: {
     path: __dirname + "/public",
     filename: "bundle.js"

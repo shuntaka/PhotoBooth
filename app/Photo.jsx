@@ -6,11 +6,12 @@ export default class Photo extends Component {
   render() {
     return (
       <Col id="photoContainer" className={`${photoStyles.photoContainer} h-90 mt-5`}>
-        <Image id="photo" className={`img-thumbnail`} src="https://placehold.it/400x300" />
+        <Image id="photo" className="img-thumbnail" src="https://placehold.it/400x300" />
         <Button
           block
           id="uploadButton" className={`mt-1 ${photoStyles.uploadButtonContaier}`}
-          onClick={this.props.onClick} >
+          onClick={this.props.onClick}
+        >
           <i className="fa fa-upload fa-2x" />
           UPLOAD
         </Button>
