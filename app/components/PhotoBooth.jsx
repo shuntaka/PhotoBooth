@@ -5,7 +5,7 @@ class PhotoBooth extends React.Component {
   render() {
     return (
       <div>
-        I'm phtobooth
+        I'm phtobooth, {this.props.score}
       </div>
     );
   }

@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 export function scoreFetchDataSuccess(score) {
   return {
     type: 'SCORE_FETCH_DATA_SUCCESS',
